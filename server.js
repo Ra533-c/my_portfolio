@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 const rateLimit = require('express-rate-limit');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
@@ -261,18 +262,13 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Save to Database
     const newMessage = await Message.create({ name, email, subject, message });
 
-    // Send Mail using Nodemailer
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
+    // Turant response do — DB save hone ke baad
+    res.status(200).json({ success: true, message: 'Message sent successfully.' });
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+    // Fire-and-forget: Resend se email background me jayegi
+    resend.emails.send({
+      from: 'Portfolio Contact <onboarding@resend.dev>',
+      to: [process.env.EMAIL_USER],
       replyTo: email,
       subject: `💼 Portfolio Contact: "${subject}" from ${name}`,
       html: `
@@ -289,19 +285,13 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
           <p style="font-size: 11px; color: #888;">Logged in Database at ${newMessage.timestamp}</p>
         </div>
       `
-    };
-
-    // Instant response — DB me save hone ke baad turant success bhejo
-    res.status(200).json({ success: true, message: 'Message sent successfully.' });
-
-    // Fire-and-forget: Email background me async jayegi, user ko wait nahi karwana
-    transporter.sendMail(mailOptions)
-      .then(() => {
-        console.log(`✅ Email sent successfully for contact from ${name} (${email})`);
-      })
-      .catch((mailErr) => {
-        console.error('❌ Background email sending failed:', mailErr.message);
-      });
+    })
+    .then((data) => {
+      console.log(`✅ Resend email sent successfully for ${name} (${email}):`, data.id);
+    })
+    .catch((mailErr) => {
+      console.error('❌ Resend email failed:', mailErr.message);
+    });
 
   } catch (err) {
     console.error('❌ Error handling contact form submission:', err);
