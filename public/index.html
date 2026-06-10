@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>RAJNIKANT | Full-Stack Software Engineer</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#a0d3a6",
+            "surface-container": "#1f1f1f",
+            "on-secondary-fixed-variant": "#474746",
+            "tertiary-container": "#b6eabc",
+            "secondary-fixed": "#e5e2e1",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed-dim": "#c8c6c5",
+            "on-surface": "#e2e2e2",
+            "inverse-surface": "#e2e2e2",
+            "on-secondary": "#313030",
+            "on-primary": "#003911",
+            "primary-fixed": "#6bff83",
+            "surface-bright": "#393939",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#21502e",
+            "inverse-on-surface": "#303030",
+            "surface-container-low": "#1b1b1b",
+            "secondary": "#c8c6c5",
+            "on-surface-variant": "#b9ccb5",
+            "surface-container-highest": "#353535",
+            "surface-tint": "#00e55b",
+            "secondary-container": "#474746",
+            "on-primary-container": "#007128",
+            "tertiary": "#ecffea",
+            "on-secondary-container": "#b7b5b4",
+            "tertiary-fixed": "#bbefc1",
+            "on-tertiary-container": "#3c6b46",
+            "surface-dim": "#131313",
+            "outline-variant": "#3b4b3a",
+            "on-primary-fixed-variant": "#00531b",
+            "inverse-primary": "#006e27",
+            "on-tertiary": "#063919",
+            "background": "#131313",
+            "primary-container": "#00ff66",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#00e55b",
+            "on-secondary-fixed": "#1c1b1b",
+            "on-primary-fixed": "#002107",
+            "surface-container-lowest": "#0e0e0e",
+            "outline": "#849581",
+            "surface-variant": "#353535",
+            "on-background": "#e2e2e2",
+            "error": "#ffb4ab",
+            "on-tertiary-fixed": "#00210b",
+            "surface": "#131313",
+            "primary": "#edffe8",
+            "surface-container-high": "#2a2a2a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "20px",
+            "unit": "8px",
+            "container-max": "1280px",
+            "gutter": "24px",
+            "margin-desktop": "64px",
+            "section-gap": "120px"
+          },
+          "fontFamily": {
+            "body-md": ["Poppins", "sans-serif"],
+            "label-caps": ["Poppins", "sans-serif"],
+            "headline-lg": ["Poppins", "sans-serif"],
+            "display-lg": ["Poppins", "sans-serif"],
+            "headline-md": ["Poppins", "sans-serif"],
+            "display-lg-mobile": ["Poppins", "sans-serif"],
+            "body-lg": ["Poppins", "sans-serif"],
+            "code": ["Poppins", "sans-serif"]
+          },
+          "fontSize": {
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "300" }],
+            "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+            "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+            "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "300" }],
+            "code": ["14px", { "lineHeight": "1.4", "letterSpacing": "-0.02em", "fontWeight": "400" }]
+          },
+          "animation": {
+            "marquee": "marquee 20s linear infinite"
+          },
+          "keyframes": {
+            "marquee": {
+              "0%": { "transform": "translateX(0%)" },
+              "100%": { "transform": "translateX(-50%)" }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0e0e0e;
+      color: #e2e2e2;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .mesh-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: #0e0e0e;
+      background-image:
+        radial-gradient(at 0% 0%, hsla(142, 100%, 15%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(142, 100%, 15%, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(142, 100%, 15%, 0.05) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(142, 100%, 15%, 0.1) 0px, transparent 50%);
+      animation: mesh-move 20s ease infinite alternate;
+    }
+
+    @keyframes mesh-move {
+      0% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
+    }
+
+    .emerald-glow {
+      text-shadow: 0 0 12px rgba(0, 229, 91, 0.6);
+    }
+
+    .aura-pulse {
+      animation: aura-pulse 3s infinite ease-in-out;
+    }
+
+    @keyframes aura-pulse {
+
+      0%,
+      100% {
+        text-shadow: 0 0 10px rgba(0, 255, 102, 0.4), 0 0 20px rgba(0, 255, 102, 0.2);
+      }
+
+      50% {
+        text-shadow: 0 0 20px rgba(0, 255, 102, 0.8), 0 0 40px rgba(0, 255, 102, 0.4);
+      }
+    }
+
+    .glass-panel {
+      background: rgba(31, 31, 31, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(59, 75, 58, 0.2);
+    }
+
+    .hover-card:hover {
+      transform: translateY(-8px);
+      border-color: #00ff66;
+      box-shadow: 0 10px 40px -10px rgba(0, 255, 102, 0.25);
+    }
+
+    .timeline-dot {
+      box-shadow: 0 0 10px #00e55b;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .reveal,
+      .hover-card,
+      .project-card,
+      .aura-pulse,
+      .mesh-bg,
+      .btn-transition {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0e0e0e;
+    }
+
+    ::-webkit-scrollbar-shadow {
+      box-shadow: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #353535;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00e55b;
+    }
+
+    .btn-transition {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+
+    .btn-transition:hover {
+      transform: translateY(-3px) scale(1.05);
+      background-color: #00ff66 !important;
+      border-color: #00ff66 !important;
+      color: #000000 !important;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.5) !important;
+    }
+
+    .btn-transition:active {
+      transform: translateY(0) scale(0.98) !important;
+    }
+
+    .btn-transition::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+      z-index: -1;
+    }
+
+    .btn-transition:hover::before {
+      left: 100%;
+    }
+
+    .skill-badge {
+      background: rgba(31, 31, 31, 0.65);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 102, 0.25);
+      color: #ffffff;
+      font-weight: 500;
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .skills-animate-ready .skill-badge {
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .skill-badge:hover {
+      transform: translateY(-3px) scale(1.05);
+      border-color: #00ff66;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
+      background: #00ff66;
+      color: #000000;
+    }
+
+    .skill-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent);
+      transition: 0.6s ease;
+    }
+
+    .skill-badge:hover::before {
+      left: 100%;
+    }
+
+    .hero-animate-ready .hero-photo {
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero-animate-ready .hero-img,
+    .hero-animate-ready .hero-text {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-animate-ready {
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-animate-ready:hover {
+      transform: translateY(-8px);
+      border-color: #00ff66;
+      box-shadow: 0 10px 40px -10px rgba(0, 255, 102, 0.25);
+    }
+  </style>
+</head>
+
+<body class="font-body-md selection:bg-primary-container selection:text-on-primary-container">
+  <div class="mesh-bg"></div>
+  <!-- TopNavBar -->
+  <nav
+    class="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex items-center px-8 py-3 gap-12 bg-black/80 backdrop-blur-2xl rounded-full max-w-fit mt-8 mx-auto border border-outline-variant/20 shadow-[0_0_20px_rgba(0,255,102,0.1)]">
+    <div
+      class="font-display-lg text-headline-md tracking-tighter text-primary drop-shadow-[0_0_10px_rgba(0,229,91,0.5)]">
+      RAJNIKANT</div>
+    <div class="hidden md:flex gap-8">
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300 hover:scale-105"
+        href="#work">Work</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300 hover:scale-105"
+        href="#stack">Stack</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-300 hover:scale-105"
+        href="#contact" id="nav-contact-link">Contact</a>
+    </div>
+    <button
+      class="bg-[#1f1f1f]/80 backdrop-blur-md border border-[#00e55b]/30 text-white px-6 py-2 rounded-full font-label-caps text-label-caps font-bold btn-transition shadow-lg"
+      id="nav-hire-me">Hire Me</button>
+  </nav>
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-[75vh] flex flex-col items-center justify-center pt-28 pb-12 px-margin-desktop overflow-hidden reveal active">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,229,91,0.05)_0%,transparent_70%)] pointer-events-none">
+      </div>
+      <div class="relative w-full max-w-4xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="md:w-1/4 hidden md:block hero-side-left">
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Full-Stack / Software Developer</h3>
+          <p class="text-on-surface-variant font-body-md text-xs leading-relaxed">Full Stack Developer with hands-on
+            experience designing and shipping production-grade, real-time MERN stack applications.</p>
+        </div>
+        <div id="hero-center-group" class="flex flex-col items-center group relative">
+          <div
+            class="hero-photo w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border border-outline-variant/30 grayscale hover:grayscale-0 hover:shadow-[0_0_40px_rgba(0,255,102,0.4)] hover:-translate-y-3 z-10 relative">
+            <img alt="Rajnikant Portrait" class="hero-img w-full h-full object-cover group-hover:scale-110"
+              src="https://res.cloudinary.com/dkzzbjfb2/image/upload/v1779541245/Untitled_design_2_xbxrif.png">
+          </div>
+          <h1
+            class="hero-text mt-6 font-display-lg text-display-lg-mobile md:text-display-lg text-primary emerald-glow aura-pulse tracking-tighter whitespace-nowrap group-hover:translate-y-2">
+            RAJNIKANT</h1>
+        </div>
+        <div class="md:w-1/4 text-center md:text-left hero-side-right">
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-4">Backend & Real-Time Systems Developer</h3>
+          <p class="text-on-surface-variant font-body-md text-xs leading-relaxed">Open to full-time or internship roles
+            in Full Stack, Backend, or Junior DevOps engineering where I can contribute from day one.</p>
+        </div>
+      </div>
+      <div class="mt-10 w-full max-w-5xl overflow-hidden relative"
+        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+        <div
+          class="flex gap-12 w-max animate-marquee opacity-30 grayscale hover:grayscale-0 transition-all duration-500 py-4 hover:opacity-100">
+          <span class="material-symbols-outlined text-4xl">javascript</span>
+          <span class="material-symbols-outlined text-4xl">data_object</span>
+          <span class="material-symbols-outlined text-4xl">terminal</span>
+          <span class="material-symbols-outlined text-4xl">cloud</span>
+          <span class="material-symbols-outlined text-4xl">database</span>
+          <span class="material-symbols-outlined text-4xl">code</span>
+          <span class="material-symbols-outlined text-4xl">javascript</span>
+          <span class="material-symbols-outlined text-4xl">data_object</span>
+          <span class="material-symbols-outlined text-4xl">terminal</span>
+          <span class="material-symbols-outlined text-4xl">cloud</span>
+          <span class="material-symbols-outlined text-4xl">database</span>
+          <span class="material-symbols-outlined text-4xl">code</span>
+          <span class="material-symbols-outlined text-4xl">javascript</span>
+          <span class="material-symbols-outlined text-4xl">data_object</span>
+          <span class="material-symbols-outlined text-4xl">terminal</span>
+          <span class="material-symbols-outlined text-4xl">cloud</span>
+          <span class="material-symbols-outlined text-4xl">database</span>
+          <span class="material-symbols-outlined text-4xl">code</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-section-gap px-margin-desktop bg-transparent reveal active">
+      <div class="max-w-container-max mx-auto text-center">
+        <h2
+          class="font-display-lg text-headline-lg md:text-display-lg mb-12 text-on-surface leading-tight max-w-5xl mx-auto">
+          Building <span class="text-primary italic">incredible, impactful,</span> and scalable software solutions...
+        </h2>
+        <div class="grid md:grid-cols-3 gap-gutter text-left mt-20">
+          <div
+            class="p-8 border-l border-primary/20 hover-card glass-panel rounded-r-xl transition-colors duration-300">
+            <span class="text-primary font-bold text-4xl mb-4 block">01</span>
+            <h4 class="font-headline-md text-headline-md mb-2">Efficiency</h4>
+            <p class="text-on-surface-variant">Writing code that executes with surgical precision and minimal overhead.
+            </p>
+          </div>
+          <div
+            class="p-8 border-l border-primary/20 hover-card glass-panel rounded-r-xl transition-colors duration-300">
+            <span class="text-primary font-bold text-4xl mb-4 block">02</span>
+            <h4 class="font-headline-md text-headline-md mb-2">Scalability</h4>
+            <p class="text-on-surface-variant">Designing architectures that grow alongside your user base without
+              friction.</p>
+          </div>
+          <div
+            class="p-8 border-l border-primary/20 hover-card glass-panel rounded-r-xl transition-colors duration-300">
+            <span class="text-primary font-bold text-4xl mb-4 block">03</span>
+            <h4 class="font-headline-md text-headline-md mb-2">Security</h4>
+            <p class="text-on-surface-variant">Implementing robust JWT, OAuth, and encryption protocols as standard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Award Section (Silver Play Button) -->
+    <section class="py-12 px-margin-desktop reveal active" id="award">
+      <div class="max-w-3xl mx-auto">
+        <div
+          class="award-card hover-card border-2 border-primary/20 rounded-2xl overflow-hidden bg-surface-container-highest shadow-[0_0_30px_rgba(0,229,91,0.1)] flex flex-col justify-center items-center p-12 text-center transition-all duration-300">
+          <span class="material-symbols-outlined text-7xl text-primary mb-6 animate-pulse"
+            data-weight="fill">workspace_premium</span>
+          <h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Silver Play Button</h3>
+          <p class="text-on-surface-variant text-body-lg max-w-sm mb-6">
+            Building a global audience of 400,000+ subscribers as a digital creator, sharing high-impact content
+            before the channel was lost in late 2024.
+          </p>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="h-px w-12 bg-primary"></span>
+            <span class="text-primary font-bold">400K+ COMMUNITY</span>
+            <span class="h-px w-12 bg-primary"></span>
+          </div>
+          <button id="view-silver-btn"
+            class="bg-[#1f1f1f]/80 backdrop-blur-md border border-[#00e55b]/30 text-white px-8 py-3 rounded-full font-label-caps text-label-caps font-bold btn-transition shadow-md flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg">gallery_thumbnail</span> VIEW SILVER PLAY BUTTON GALLERY
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Arsenal Section -->
+    <section class="py-section-gap px-margin-desktop reveal active" id="stack">
+      <div class="max-w-container-max mx-auto">
+        <div class="flex justify-between items-end mb-16" id="stack-heading">
+          <div><span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">Expertise</span>
+            <h2 class="font-headline-lg text-headline-lg mt-2">Tech Arsenal</h2>
+          </div>
+        </div>
+
+        <div class="relative w-full">
+          <!-- Skills Swiper Controller (Mobile/Tablet Only) -->
+          <div id="skills-swiper-ctrl" class="hidden justify-between items-center mb-8 max-w-md mx-auto px-4">
+            <button id="skills-prev-btn"
+              class="w-12 h-12 rounded-full border border-primary/30 text-primary flex items-center justify-center bg-black/60 hover:bg-primary/20 transition-all hover:scale-105 active:scale-95">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <div class="flex flex-col items-center">
+              <span id="skills-swiper-title"
+                class="text-primary font-bold text-sm tracking-wider uppercase text-center min-h-[20px]">Languages &
+                Frontend</span>
+              <span id="skills-swiper-page" class="text-on-surface-variant font-code text-xs mt-1">1 / 4</span>
+            </div>
+            <button id="skills-next-btn"
+              class="w-12 h-12 rounded-full border border-primary/30 text-primary flex items-center justify-center bg-black/60 hover:bg-primary/20 transition-all hover:scale-105 active:scale-95">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12" id="skills-grid">
+            <!-- Languages & Frontend -->
+            <div
+              class="skills-category-card glass-panel p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/30 transition-colors duration-300">
+              <h3 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">code</span> Languages &amp; Frontend
+              </h3>
+              <div class="flex flex-wrap gap-2.5">
+                <div class="skill-badge px-4 py-2 text-sm font-medium">JavaScript</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">TypeScript</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">C++</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Python</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">HTML</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">CSS</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">React.js</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Tailwind CSS</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Bootstrap</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Redux Toolkit</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Socket.IO Client</div>
+              </div>
+            </div>
+
+            <!-- Backend & Databases -->
+            <div
+              class="skills-category-card glass-panel p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/30 transition-colors duration-300">
+              <h3 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">database</span> Backend &amp; Databases
+              </h3>
+              <div class="flex flex-wrap gap-2.5">
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Node.js</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Express.js</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">REST APIs</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">JWT</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">OAuth 2.0</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Passport.js</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">MongoDB Atlas</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">MySQL</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Socket.IO</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">WebSockets</div>
+              </div>
+            </div>
+
+            <!-- DevOps, Cloud & Messaging -->
+            <div
+              class="skills-category-card glass-panel p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/30 transition-colors duration-300">
+              <h3 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">cloud</span> DevOps &amp; Messaging
+              </h3>
+              <div class="flex flex-wrap gap-2.5">
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Docker</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">AWS (EC2, S3, RDS)</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">RabbitMQ</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">GitHub Actions</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">GitLab</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Linux</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Microservices</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">MVC</div>
+              </div>
+            </div>
+
+            <!-- Tools & Payments & Others -->
+            <div
+              class="skills-category-card glass-panel p-6 rounded-2xl border border-outline-variant/20 hover:border-primary/30 transition-colors duration-300 lg:col-span-3">
+              <h3 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">build</span> Tools, Payments &amp; Others
+              </h3>
+              <div class="flex flex-wrap gap-2.5">
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Stripe</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Razorpay</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Cloudinary</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Mapbox SDK</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Git</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">GitHub</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Postman</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Vercel</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Render</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Vite</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Canva</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">OOPs</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">Problem Solving</div>
+                <div class="skill-badge px-4 py-2 text-sm font-medium">AI &amp; Content Creation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-section-gap px-margin-desktop bg-surface-container-lowest/50 backdrop-blur-sm reveal active"
+      id="work">
+      <div class="max-w-container-max mx-auto">
+        <h2 class="font-headline-lg text-headline-lg mb-4 text-center">Featured Projects</h2>
+        <p class="text-on-surface-variant text-center mb-16 max-w-2xl mx-auto px-4">
+          I am a passionate fresher currently looking for high-impact opportunities where I can apply my MERN stack
+          skills and grow alongside a forward-thinking team.
+        </p>
+
+        <!-- Projects Swiper Controller (Mobile/Tablet Only) -->
+        <div id="projects-swiper-ctrl" class="hidden justify-between items-center mb-8 max-w-md mx-auto px-4">
+          <button id="projects-prev-btn"
+            class="w-12 h-12 rounded-full border border-primary/30 text-primary flex items-center justify-center bg-black/60 hover:bg-primary/20 transition-all hover:scale-105 active:scale-95">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <div class="flex flex-col items-center">
+            <span id="projects-swiper-title"
+              class="text-primary font-bold text-sm tracking-wider uppercase text-center min-h-[20px]">Project
+              Title</span>
+            <span id="projects-swiper-page" class="text-on-surface-variant font-code text-xs mt-1">1 / 3</span>
+          </div>
+          <button id="projects-next-btn"
+            class="w-12 h-12 rounded-full border border-primary/30 text-primary flex items-center justify-center bg-black/60 hover:bg-primary/20 transition-all hover:scale-105 active:scale-95">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+          <!-- Loading Spinner (Replaced dynamically) -->
+          <div class="col-span-full flex flex-col items-center justify-center py-16 gap-4">
+            <div class="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+            <p class="text-on-surface-variant font-code text-code tracking-widest uppercase">LOADING SECURE API DATA...
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="py-section-gap px-margin-desktop reveal active" id="journey">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-headline-lg text-headline-lg mb-20 text-center">Journey</h2>
+        <div class="relative">
+          <div class="absolute left-1/2 -translate-x-1/2 w-px h-full bg-primary/20"></div>
+
+          <div class="relative flex justify-between items-center w-full mb-20 group journey-item reveal active">
+            <div class="w-[45%] text-right pr-12">
+              <span class="font-label-caps text-label-caps text-primary mb-2 block">2022 - 2024</span>
+              <h4 class="font-headline-md text-headline-md">Digital Creator on YouTube</h4>
+              <p class="text-on-surface-variant">Simplifying complex engineering concepts through informative videos for
+                a global audience of 400k+.</p>
+            </div>
+            <div
+              class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-background border-2 border-primary rounded-full timeline-dot z-10">
+            </div>
+            <div class="w-[45%] pl-12"></div>
+          </div>
+
+          <div class="relative flex justify-between items-center w-full group journey-item reveal active">
+            <div class="w-[45%] pr-12"></div>
+            <div
+              class="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-background border-2 border-primary rounded-full timeline-dot z-10">
+            </div>
+            <div class="w-[45%] text-left pl-12">
+              <span class="font-label-caps text-label-caps text-primary mb-2 block">2024 - 2027</span>
+              <h4 class="font-headline-md text-headline-md">BCA Student</h4>
+              <p class="text-on-surface-variant">Shoolini University. Specializing in Software Architecture and
+                Algorithmic Thinking (Pursuing).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="py-section-gap px-margin-desktop bg-primary text-black reveal" id="contact">
+      <div class="max-w-container-max mx-auto text-center">
+        <h2 class="font-display-lg text-headline-lg md:text-display-lg mb-8 tracking-tighter">LET'S BUILD THE FUTURE.
+        </h2>
+        <p class="text-black/70 text-body-lg max-w-xl mx-auto mb-12">
+          I'm currently available for full-stack developer roles and high-impact partnerships. Let's create something
+          legendary.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6">
+          <button id="cta-contact-btn"
+            class="bg-[#1f1f1f] border border-[#00e55b]/30 text-white px-10 py-4 rounded-full font-label-caps text-label-caps font-bold btn-transition shadow-xl inline-flex items-center justify-center">Send
+            an Email</button>
+          <a id="download-cv-btn"
+            class="bg-[#1f1f1f] border border-[#00e55b]/30 text-white px-10 py-4 rounded-full font-label-caps text-label-caps font-bold btn-transition shadow-xl flex items-center justify-center gap-2"
+            href="#">
+            <span class="material-symbols-outlined text-xl">download</span>Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="flex flex-col items-center justify-center py-section-gap px-margin-desktop w-full text-center gap-unit bg-surface-container-lowest border-t border-outline-variant/10">
+    <div class="font-headline-md text-headline-md text-on-surface mb-8">RAJNIKANT</div>
+    <div class="flex flex-wrap justify-center gap-12 mb-12">
+      <!-- Gmail -->
+      <a class="group flex flex-col items-center gap-2" href="mailto:rajnikantgoswami787@gmail.com">
+        <div
+          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+          <span class="material-symbols-outlined">mail</span>
+        </div>
+        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">GMAIL</span>
+      </a>
+      <!-- GitHub -->
+      <a class="group flex flex-col items-center gap-2" href="https://github.com/Ra533-c" target="_blank"
+        rel="noopener noreferrer">
+        <div
+          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+          <!-- Replaced code_off with custom clean Github logo layout path -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+          </svg>
+        </div>
+        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">GITHUB</span>
+      </a>
+      <!-- LinkedIn -->
+      <a class="group flex flex-col items-center gap-2" href="https://www.linkedin.com/in/rajni-kant-goswami-056449231/"
+        target="_blank" rel="noopener noreferrer">
+        <div
+          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+          <span class="material-symbols-outlined">work</span>
+        </div>
+        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">LINKEDIN</span>
+      </a>
+      <!-- WhatsApp -->
+      <a class="group flex flex-col items-center gap-2" href="https://wa.me/918607832386" target="_blank"
+        rel="noopener noreferrer">
+        <div
+          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+          <span class="material-symbols-outlined">chat</span>
+        </div>
+        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">WHATSAPP</span>
+      </a>
+    </div>
+    <p class="font-label-caps text-label-caps text-on-surface-variant opacity-80 uppercase tracking-widest">© 2024
+      RAJNIKANT. BUILT WITH PRECISION.</p>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div class="fixed inset-0 z-[100] flex items-center justify-center invisible opacity-0 transition-all duration-300"
+    id="contact-modal">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-md" id="modal-backdrop"></div>
+    <div
+      class="relative bg-black border border-primary/30 w-full max-w-lg mx-margin-mobile p-8 rounded-2xl shadow-[0_0_50px_rgba(0,255,102,0.15)] reveal active">
+      <button class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors z-10"
+        id="close-modal">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div id="modal-form-view">
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-2">Let's Connect</h2>
+        <p class="text-on-surface-variant font-body-md mb-8">Ready to build something legendary? Send me a message.</p>
+        <form class="space-y-6" id="contact-form">
+          <div>
+            <label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Your
+              Name</label>
+            <input
+              class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              placeholder="John Doe" required="" type="text">
+          </div>
+          <div>
+            <label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Email
+              Address</label>
+            <input
+              class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              placeholder="john@example.com" required="" type="email">
+          </div>
+          <div>
+            <label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Subject</label>
+            <input
+              class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+              placeholder="Project Inquiry" required="" type="text">
+          </div>
+          <div>
+            <label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Message</label>
+            <textarea
+              class="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+              placeholder="Tell me about your vision..." required="" rows="4"></textarea>
+          </div>
+          <button
+            class="w-full bg-[#1f1f1f] border border-[#00e55b]/30 text-white py-4 rounded-lg font-label-caps text-label-caps font-bold btn-transition flex items-center justify-center gap-2"
+            type="submit">SEND MESSAGE</button>
+        </form>
+      </div>
+      <div class="hidden flex-col items-center text-center py-8" id="modal-success-view">
+        <div
+          class="w-24 h-24 rounded-full border-4 border-primary/20 flex items-center justify-center mb-8 shadow-[0_0_30px_rgba(0,255,102,0.2)]">
+          <span class="material-symbols-outlined text-6xl text-primary animate-pulse"
+            data-weight="fill">check_circle</span>
+        </div>
+        <h2 class="font-display-lg text-headline-lg text-primary mb-4 tracking-tighter">MESSAGE SENT</h2>
+        <p class="text-on-surface-variant font-body-lg max-w-xs mb-10">Thanks for reaching out. I'll get back to you
+          within 24 hours.</p>
+        <button
+          class="w-full bg-[#1f1f1f] border border-[#00e55b]/30 text-white py-4 rounded-lg font-label-caps text-label-caps font-bold btn-transition shadow-lg"
+          id="success-close-btn">BACK TO PORTFOLIO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Silver Play Button Lightbox Modal -->
+  <div class="fixed inset-0 z-[110] flex items-center justify-center invisible opacity-0 transition-all duration-300"
+    id="silver-lightbox">
+    <div class="absolute inset-0 bg-black/90 backdrop-blur-md" id="lightbox-backdrop"></div>
+    <div class="relative w-full max-w-3xl mx-margin-mobile p-4 flex flex-col items-center z-10">
+      <button class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors z-20"
+        id="close-lightbox">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+
+      <div
+        class="relative w-full aspect-[4/3] max-h-[70vh] flex items-center justify-center bg-black/50 border border-outline-variant/30 rounded-2xl overflow-hidden group">
+        <!-- Prev Button -->
+        <button
+          class="absolute left-4 z-20 w-12 h-12 rounded-full bg-black/60 border border-outline-variant/30 text-white flex items-center justify-center hover:text-primary hover:border-primary transition-all active:scale-90"
+          id="prev-lightbox-btn">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+
+        <img id="lightbox-img" class="max-w-full max-h-full object-contain transition-all duration-500" src=""
+          alt="Silver Play Button Achievement">
+
+        <!-- Next Button -->
+        <button
+          class="absolute right-4 z-20 w-12 h-12 rounded-full bg-black/60 border border-outline-variant/30 text-white flex items-center justify-center hover:text-primary hover:border-primary transition-all active:scale-90"
+          id="next-lightbox-btn">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+
+      <!-- Counter Indicator -->
+      <p class="text-primary font-code text-code mt-4" id="lightbox-counter">IMAGE 1 OF 3</p>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-8 right-8 z-[150] flex flex-col gap-4"></div>
+
+  <script>
+    // Global helper for Project "Read More" expanding
+    window.toggleDesc = function (btn) {
+      const p = btn.previousElementSibling;
+      if (p.classList.contains('line-clamp-2')) {
+        p.classList.remove('line-clamp-2');
+        p.classList.add('line-clamp-none');
+        btn.innerHTML = 'SHOW LESS <span class="material-symbols-outlined text-[12px]">expand_less</span>';
+      } else {
+        p.classList.remove('line-clamp-none');
+        p.classList.add('line-clamp-2');
+        btn.innerHTML = 'READ MORE <span class="material-symbols-outlined text-[12px]">expand_more</span>';
+      }
+      setTimeout(() => { if (window.ScrollTrigger) ScrollTrigger.refresh(); }, 100);
+    };
+
+    // Smooth scroll and standard intersection animation loader
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Dynamic Variables State
+    let projects = [];
+    let silverImages = [];
+    let silverActiveIndex = 0;
+
+    // Elements Bindings
+    const projectsContainer = document.getElementById('projects-container');
+    const viewSilverBtn = document.getElementById('view-silver-btn');
+    const silverLightbox = document.getElementById('silver-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const prevLightboxBtn = document.getElementById('prev-lightbox-btn');
+    const nextLightboxBtn = document.getElementById('next-lightbox-btn');
+    const closeLightboxBtn = document.getElementById('close-lightbox');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+    const contactForm = document.getElementById('contact-form');
+    const modalFormView = document.getElementById('modal-form-view');
+    const modalSuccessView = document.getElementById('modal-success-view');
+    const contactModal = document.getElementById('contact-modal');
+    const hireBtn = document.getElementById('nav-hire-me');
+    const contactNavBtn = document.getElementById('nav-contact-link');
+    const closeModalBtn = document.getElementById('close-modal');
+    const successCloseBtn = document.getElementById('success-close-btn');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const downloadCvBtn = document.getElementById('download-cv-btn');
+
+    // Custom Toast Alert System
+    const showToast = (message, type = 'error') => {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `px-6 py-4 rounded-xl border backdrop-blur-md shadow-lg transition-all duration-300 transform translate-y-2 opacity-0 flex items-center gap-3 ${type === 'success'
+        ? 'bg-black/90 border-primary text-primary shadow-[0_0_15px_rgba(0,255,102,0.15)]'
+        : 'bg-black/90 border-red-500/50 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.15)]'
+        }`;
+
+      const icon = type === 'success' ? 'check_circle' : 'error';
+      toast.innerHTML = `
+        <span class="material-symbols-outlined text-xl">${icon}</span>
+        <span class="font-code text-sm">${message}</span>
+      `;
+
+      container.appendChild(toast);
+
+      // Animation entry trigger
+      setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      }, 10);
+
+      // Auto dismiss
+      setTimeout(() => {
+        toast.classList.add('translate-y-2', 'opacity-0');
+        setTimeout(() => {
+          toast.remove();
+        }, 300);
+      }, 4000);
+    };
+
+    // Swiper bindings and state
+    let activeSkillIndex = 0;
+    let activeProjectIndex = 0;
+
+    const skillCards = document.querySelectorAll('.skills-category-card');
+    const skillsSwiperCtrl = document.getElementById('skills-swiper-ctrl');
+    const skillsPrevBtn = document.getElementById('skills-prev-btn');
+    const skillsNextBtn = document.getElementById('skills-next-btn');
+    const skillsSwiperTitle = document.getElementById('skills-swiper-title');
+    const skillsSwiperPage = document.getElementById('skills-swiper-page');
+
+    const projectsPrevBtn = document.getElementById('projects-prev-btn');
+    const projectsNextBtn = document.getElementById('projects-next-btn');
+    const projectsSwiperCtrl = document.getElementById('projects-swiper-ctrl');
+    const projectsSwiperTitle = document.getElementById('projects-swiper-title');
+    const projectsSwiperPage = document.getElementById('projects-swiper-page');
+
+    const updateSkillsSwiper = () => {
+      const isMobileTablet = window.innerWidth < 1024;
+      if (isMobileTablet) {
+        skillsSwiperCtrl.classList.remove('hidden');
+        skillsSwiperCtrl.classList.add('flex');
+        skillCards.forEach((card, idx) => {
+          if (idx === activeSkillIndex) {
+            card.style.display = 'block';
+            card.classList.remove('lg:col-span-3');
+            gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        const titles = [
+          "Languages & Frontend",
+          "Backend & Databases",
+          "DevOps & Messaging",
+          "Tools, Payments & Others"
+        ];
+        skillsSwiperTitle.textContent = titles[activeSkillIndex];
+        skillsSwiperPage.textContent = `${activeSkillIndex + 1} / ${skillCards.length}`;
+      } else {
+        skillsSwiperCtrl.classList.remove('flex');
+        skillsSwiperCtrl.classList.add('hidden');
+        skillCards.forEach((card, idx) => {
+          card.style.display = 'block';
+          if (idx === 3) {
+            card.classList.add('lg:col-span-3');
+          } else {
+            card.classList.remove('lg:col-span-3');
+          }
+        });
+      }
+    };
+
+    const updateProjectsView = () => {
+      const isMobileTablet = window.innerWidth < 768;
+      const cards = projectsContainer.querySelectorAll('.project-card');
+      if (cards.length === 0) return;
+
+      if (isMobileTablet) {
+        projectsSwiperCtrl.classList.remove('hidden');
+        projectsSwiperCtrl.classList.add('flex');
+        cards.forEach((card, idx) => {
+          if (idx === activeProjectIndex) {
+            card.style.display = 'block';
+            gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (projects[activeProjectIndex]) {
+          projectsSwiperTitle.textContent = projects[activeProjectIndex].title;
+          projectsSwiperPage.textContent = `${activeProjectIndex + 1} / ${projects.length}`;
+        }
+      } else {
+        projectsSwiperCtrl.classList.remove('flex');
+        projectsSwiperCtrl.classList.add('hidden');
+        cards.forEach(card => {
+          card.style.display = 'block';
+        });
+      }
+    };
+
+    if (skillsPrevBtn) {
+      skillsPrevBtn.addEventListener('click', () => {
+        activeSkillIndex = (activeSkillIndex - 1 + skillCards.length) % skillCards.length;
+        updateSkillsSwiper();
+      });
+    }
+    if (skillsNextBtn) {
+      skillsNextBtn.addEventListener('click', () => {
+        activeSkillIndex = (activeSkillIndex + 1) % skillCards.length;
+        updateSkillsSwiper();
+      });
+    }
+
+    if (projectsPrevBtn) {
+      projectsPrevBtn.addEventListener('click', () => {
+        if (projects.length === 0) return;
+        activeProjectIndex = (activeProjectIndex - 1 + projects.length) % projects.length;
+        updateProjectsView();
+      });
+    }
+    if (projectsNextBtn) {
+      projectsNextBtn.addEventListener('click', () => {
+        if (projects.length === 0) return;
+        activeProjectIndex = (activeProjectIndex + 1) % projects.length;
+        updateProjectsView();
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      updateSkillsSwiper();
+      updateProjectsView();
+    });
+
+    // Load Projects API
+    const loadProjects = async () => {
+      try {
+        const res = await fetch('/api/projects');
+        if (!res.ok) throw new Error('API Error');
+        projects = await res.json();
+        renderProjects();
+      } catch (err) {
+        console.error('Failed to load projects:', err);
+        projectsContainer.innerHTML = `
+          <div class="col-span-full text-center py-12 border border-red-500/30 rounded-2xl bg-red-950/10">
+            <span class="material-symbols-outlined text-5xl text-red-400 mb-2">error</span>
+            <p class="text-red-400 font-code">FAILED TO LOAD PROJECTS. PLEASE REFRESH THE PAGE.</p>
+          </div>
+        `;
+        showToast('Failed to connect to the backend server to fetch projects.', 'error');
+      }
+    };
+
+    // Render Dynamic Cards
+    const renderProjects = () => {
+      if (projects.length === 0) {
+        projectsContainer.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <p class="text-on-surface-variant font-code">NO PROJECTS FOUND.</p>
+          </div>
+        `;
+        return;
+      }
+
+      projectsContainer.innerHTML = projects.map(proj => `
+        <div class="project-card border border-outline-variant/30 rounded-2xl overflow-hidden bg-surface-container-low group relative">
+          <div class="aspect-video relative overflow-hidden bg-surface-container-high">
+            <img alt="${proj.title} Mockup" class="project-card-img w-full h-full object-cover grayscale hover:grayscale-0 hover:scale-110 transition-all duration-700" src="${proj.imageUrl}" loading="lazy">
+            <div class="absolute top-4 right-4 bg-primary text-black px-3 py-1 rounded-full font-label-caps text-label-caps font-bold pointer-events-none">
+              ${proj.techStack[0] || 'DEV'}
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline-md text-headline-md text-on-surface mb-2">${proj.title}</h3>
+            <div class="mb-6">
+              <p class="text-on-surface-variant text-sm line-clamp-2 transition-all duration-300 leading-relaxed">${proj.description}</p>
+              ${proj.description.length > 100 ? `<button type="button" onclick="window.toggleDesc(this)" class="read-more-btn text-primary text-[10px] font-label-caps tracking-widest hover:underline mt-2 flex items-center gap-1 uppercase relative z-10">READ MORE <span class="material-symbols-outlined text-[12px]">expand_more</span></button>` : ''}
+            </div>
+            <div class="flex flex-wrap gap-2 mb-6">
+              ${proj.techStack.map(tech => `
+                <span class="bg-surface-container px-3 py-1 rounded text-primary font-code text-code">${tech}</span>
+              `).join('')}
+            </div>
+            <div class="flex gap-4">
+              <a href="${proj.liveLink}" target="_blank" rel="noopener noreferrer" class="bg-[#1f1f1f]/80 backdrop-blur-md border border-[#00e55b]/30 text-white px-5 py-2 rounded-full font-label-caps text-[11px] font-bold btn-transition shadow-md relative z-10">LIVE DEMO</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      updateProjectsView();
+
+      // Execute scroll animation for dynamically loaded project cards
+      setTimeout(() => {
+        if (window.ScrollTrigger) ScrollTrigger.refresh();
+        gsap.from("#projects-container .project-card", {
+          scrollTrigger: {
+            trigger: "#work",
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          duration: 0.8,
+          opacity: 0,
+          y: 40,
+          stagger: 0.15,
+          ease: "power2.out",
+          clearProps: "all",
+          onComplete: () => {
+            document.querySelectorAll("#projects-container .project-card").forEach(card => card.classList.add('project-animate-ready'));
+          }
+        });
+      }, 200);
+    };
+
+    // Load Silver images
+    const loadSilverImages = async () => {
+      try {
+        const res = await fetch('/api/silver');
+        if (!res.ok) throw new Error('API Error');
+        silverImages = await res.json();
+      } catch (err) {
+        console.error('Failed to load Silver images:', err);
+        silverImages = [
+          "https://res.cloudinary.com/dkzzbjfb2/image/upload/v1779541245/IMG_20250905_153755.jpg_d1httd.jpg",
+          "https://res.cloudinary.com/dkzzbjfb2/image/upload/v1779541244/IMG_20250905_153737.jpg_hymwkp.jpg",
+          "https://res.cloudinary.com/dkzzbjfb2/image/upload/v1779541245/IMG_20250905_152723.jpg_zb8sjg.jpg"
+        ];
+      }
+    };
+
+    // Lightbox handlers
+    const openLightbox = () => {
+      if (silverImages.length === 0) return;
+      silverActiveIndex = 0;
+      updateLightboxImage();
+      silverLightbox.classList.remove('invisible', 'opacity-0');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      silverLightbox.classList.add('invisible', 'opacity-0');
+      document.body.style.overflow = '';
+    };
+
+    const updateLightboxImage = () => {
+      lightboxImg.style.opacity = 0;
+      setTimeout(() => {
+        lightboxImg.src = silverImages[silverActiveIndex];
+        lightboxCounter.textContent = `IMAGE ${silverActiveIndex + 1} OF ${silverImages.length}`;
+        lightboxImg.style.opacity = 1;
+      }, 200);
+    };
+
+    const prevImage = () => {
+      silverActiveIndex = (silverActiveIndex - 1 + silverImages.length) % silverImages.length;
+      updateLightboxImage();
+    };
+
+    const nextImage = () => {
+      silverActiveIndex = (silverActiveIndex + 1) % silverImages.length;
+      updateLightboxImage();
+    };
+
+    if (viewSilverBtn) viewSilverBtn.addEventListener('click', openLightbox);
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (prevLightboxBtn) prevLightboxBtn.addEventListener('click', prevImage);
+    if (nextLightboxBtn) nextLightboxBtn.addEventListener('click', nextImage);
+
+    // Modal forms controls
+    const openModal = (e) => {
+      if (e) e.preventDefault();
+      modalFormView.classList.remove('hidden');
+      modalSuccessView.classList.add('hidden');
+      modalSuccessView.classList.remove('flex');
+      contactModal.classList.remove('invisible', 'opacity-0');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      contactModal.classList.add('invisible', 'opacity-0');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        contactForm.reset();
+        modalFormView.classList.remove('hidden');
+        modalSuccessView.classList.add('hidden');
+      }, 300);
+    };
+
+    const ctaContactBtn = document.getElementById('cta-contact-btn');
+    if (hireBtn) hireBtn.addEventListener('click', openModal);
+    if (contactNavBtn) contactNavBtn.addEventListener('click', openModal);
+    if (ctaContactBtn) ctaContactBtn.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.onclick = closeModal;
+    if (successCloseBtn) successCloseBtn.onclick = closeModal;
+    if (modalBackdrop) modalBackdrop.onclick = closeModal;
+
+    // GSAP Animations
+    const initAnimations = () => {
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Nav Bar Animation
+      gsap.from("nav", {
+        duration: 1,
+        y: -100,
+        opacity: 0,
+        ease: "power4.out"
+      });
+
+      // Hero Name and texts
+      gsap.from(".hero-text", {
+        duration: 1.2,
+        opacity: 0,
+        y: 30,
+        ease: "power4.out",
+        delay: 0.4,
+        clearProps: "all"
+      });
+
+      gsap.from(".hero-side-left h3, .hero-side-left p", {
+        duration: 1,
+        opacity: 0,
+        y: 30,
+        delay: 0.4,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+
+      gsap.from(".hero-side-right h3, .hero-side-right p", {
+        duration: 1,
+        opacity: 0,
+        y: 30,
+        delay: 0.4,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+
+      // Hero Portrait Animation
+      gsap.from(".hero-photo", {
+        duration: 1.2,
+        scale: 0.85,
+        opacity: 0,
+        y: 40,
+        ease: "back.out(1.5)",
+        delay: 0.2,
+        clearProps: "all",
+        onComplete: () => {
+          const heroGroup = document.getElementById('hero-center-group');
+          if (heroGroup) heroGroup.classList.add('hero-animate-ready');
+        }
+      });
+
+      // Hero Tech Icons Animation
+      gsap.from("main section:first-of-type .material-symbols-outlined", {
+        duration: 1,
+        opacity: 0,
+        y: 30,
+        delay: 0.6,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+
+      // Philosophy Section Heading
+      gsap.from("#philosophy h2", {
+        scrollTrigger: {
+          trigger: "#philosophy h2",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        y: 40,
+        opacity: 0,
+        ease: "power3.out"
+      });
+
+      // Philosophy Section hover-cards
+      gsap.from(".glass-panel.hover-card", {
+        scrollTrigger: {
+          trigger: ".glass-panel.hover-card",
+          start: "top 90%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+
+      // Tech Arsenal Heading Animation
+      gsap.from("#stack-heading", {
+        scrollTrigger: {
+          trigger: "#stack-heading",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        y: 40,
+        opacity: 0,
+        ease: "power3.out"
+      });
+
+      // Tech Arsenal Stagger scroll animation
+      gsap.from(".skills-category-card", {
+        scrollTrigger: {
+          trigger: "#stack",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        duration: 0.8,
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+
+      // Stagger animation for individual skill badges inside each category card on scroll
+      document.querySelectorAll(".skills-category-card").forEach(card => {
+        gsap.from(card.querySelectorAll(".skill-badge"), {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          duration: 0.6,
+          opacity: 0,
+          scale: 0.8,
+          y: 15,
+          stagger: 0.04,
+          ease: "back.out(1.7)",
+          clearProps: "all",
+          onComplete: () => card.classList.add('skills-animate-ready')
+        });
+      });
+
+      // Featured Projects Header Animation
+      gsap.from("#work h2, #work p", {
+        scrollTrigger: {
+          trigger: "#work h2",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+
+      // Journey Section Heading Animation
+      gsap.from("#journey h2", {
+        scrollTrigger: {
+          trigger: "#journey h2",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 1,
+        opacity: 0,
+        y: 40,
+        ease: "power3.out"
+      });
+
+      // Journey Section Timeline Entry Animation
+      document.querySelectorAll(".journey-item").forEach(item => {
+        gsap.from(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          duration: 1,
+          opacity: 0,
+          y: 35,
+          ease: "power3.out"
+        });
+      });
+
+      // Silver Play button card zoom in
+      gsap.from(".award-card", {
+        scrollTrigger: {
+          trigger: ".award-card",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 1.2,
+        scale: 0.95,
+        opacity: 0,
+        y: 45,
+        ease: "back.out(1.5)"
+      });
+
+      // Contact section elements staggered fade & rise
+      gsap.from("#contact h2, #contact p, #contact .flex.flex-wrap", {
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 0.8,
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        ease: "power3.out",
+        clearProps: "all"
+      });
+
+      // Footer elements staggered fade & rise
+      gsap.from("footer > div, footer > p", {
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top 90%",
+          toggleActions: "play none none none"
+        },
+        duration: 0.8,
+        opacity: 0,
+        y: 40,
+        stagger: 0.15,
+        ease: "power3.out",
+        clearProps: "all"
+      });
+    };
+
+    // Contact API dispatcher
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const textInputs = contactForm.querySelectorAll('input[type="text"]');
+        const nameInput = textInputs[0];
+        const emailInput = contactForm.querySelector('input[type="email"]');
+        const subjectInput = textInputs[1];
+        const messageInput = contactForm.querySelector('textarea');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+        const payload = {
+          name: nameInput.value,
+          email: emailInput.value,
+          subject: subjectInput.value,
+          message: messageInput.value
+        };
+
+        if (payload.name.trim().length < 2 || payload.subject.trim().length < 2 || payload.message.trim().length < 10) {
+          showToast('Validation Error: Name & Subject must be 2+ chars, Message 10+ chars.', 'error');
+          return;
+        }
+
+        try {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg">progress_activity</span> SENDING...';
+          submitBtn.style.opacity = 0.7;
+          submitBtn.classList.add('cursor-not-allowed');
+
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            throw new Error(data.error || 'Server Error');
+          }
+
+          modalFormView.classList.add('hidden');
+          modalSuccessView.classList.remove('hidden');
+          modalSuccessView.classList.add('flex');
+          showToast('Message sent successfully!', 'success');
+          contactForm.reset();
+        } catch (err) {
+          console.error(err);
+          showToast(err.message || 'Failed to send message. Please try again.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'SEND MESSAGE';
+          submitBtn.style.opacity = 1;
+          submitBtn.classList.remove('cursor-not-allowed');
+        }
+      });
+    }
+
+    // Download CV handler with "Coming soon" fallback alert
+    if (downloadCvBtn) {
+      downloadCvBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          const response = await fetch('/SDE_Resume.pdf', { method: 'HEAD' });
+          if (response.ok) {
+            const link = document.createElement('a');
+            link.href = '/SDE_Resume.pdf';
+            link.download = 'Rajnikant_SDE_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            showToast('CV will be available soon', 'error');
+          }
+        } catch (err) {
+          showToast('CV will be available soon', 'error');
+        }
+      });
+    }
+
+    // Initialize application on loaded
+    window.addEventListener('DOMContentLoaded', () => {
+      loadProjects();
+      loadSilverImages();
+      updateSkillsSwiper();
+      initAnimations();
+    });
+
+    // Keyboard handlers
+    window.addEventListener('keydown', (e) => {
+      if (!silverLightbox.classList.contains('invisible')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+      }
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+
+</html>
