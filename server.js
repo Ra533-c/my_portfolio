@@ -19,6 +19,10 @@ const Silver = require('./models/Silver');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Render/Heroku jaise platforms reverse proxy use karte hain
+// Ye setting enable karna zaroori hai taaki rate-limiter sahi IP identify kare
+app.set('trust proxy', 1);
+
 // Cloudinary Config
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
