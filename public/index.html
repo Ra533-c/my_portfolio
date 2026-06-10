@@ -176,10 +176,49 @@
       border: 1px solid rgba(59, 75, 58, 0.2);
     }
 
+    /* Consistent hover-card — same feel as Philosophy cards */
+    .hover-card {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
+    }
+
     .hover-card:hover {
       transform: translateY(-8px);
+      border-color: #00ff66 !important;
+      box-shadow: 0 12px 40px -8px rgba(0, 255, 102, 0.3),
+                  0 0 0 1px rgba(0, 255, 102, 0.1);
+    }
+
+    /* Footer social icon hover — matching Philosophy card vibe */
+    .footer-icon-link {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .footer-icon-link:hover {
+      transform: translateY(-6px);
+    }
+
+    .footer-icon-link .icon-circle {
+      transition: border-color 0.3s ease,
+                  color 0.3s ease,
+                  box-shadow 0.3s ease,
+                  background-color 0.3s ease;
+    }
+
+    .footer-icon-link:hover .icon-circle {
       border-color: #00ff66;
-      box-shadow: 0 10px 40px -10px rgba(0, 255, 102, 0.25);
+      color: #00ff66;
+      box-shadow: 0 0 18px rgba(0, 255, 102, 0.4),
+                  0 0 0 1px rgba(0, 255, 102, 0.1);
+    }
+
+    .footer-icon-link .icon-label {
+      transition: color 0.3s ease;
+    }
+
+    .footer-icon-link:hover .icon-label {
+      color: #00ff66;
     }
 
     .timeline-dot {
@@ -320,14 +359,18 @@
       transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .project-animate-ready {
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Project cards hover — matches hover-card system */
+    .project-card {
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
     }
 
-    .project-animate-ready:hover {
+    .project-card:hover {
       transform: translateY(-8px);
-      border-color: #00ff66;
-      box-shadow: 0 10px 40px -10px rgba(0, 255, 102, 0.25);
+      border-color: #00ff66 !important;
+      box-shadow: 0 12px 40px -8px rgba(0, 255, 102, 0.3),
+                  0 0 0 1px rgba(0, 255, 102, 0.1);
     }
   </style>
 </head>
@@ -686,44 +729,34 @@
     <div class="font-headline-md text-headline-md text-on-surface mb-8">RAJNIKANT</div>
     <div class="flex flex-wrap justify-center gap-12 mb-12">
       <!-- Gmail -->
-      <a class="group flex flex-col items-center gap-2" href="mailto:rajnikantgoswami787@gmail.com">
-        <div
-          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+      <a class="footer-icon-link flex flex-col items-center gap-2" href="mailto:rajnikantgoswami787@gmail.com">
+        <div class="icon-circle w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
           <span class="material-symbols-outlined">mail</span>
         </div>
-        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">GMAIL</span>
+        <span class="icon-label font-label-caps text-[10px] text-on-surface-variant">GMAIL</span>
       </a>
       <!-- GitHub -->
-      <a class="group flex flex-col items-center gap-2" href="https://github.com/Ra533-c" target="_blank"
-        rel="noopener noreferrer">
-        <div
-          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
-          <!-- Replaced code_off with custom clean Github logo layout path -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github"
-            viewBox="0 0 16 16">
-            <path
-              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+      <a class="footer-icon-link flex flex-col items-center gap-2" href="https://github.com/Ra533-c" target="_blank" rel="noopener noreferrer">
+        <div class="icon-circle w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
           </svg>
         </div>
-        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">GITHUB</span>
+        <span class="icon-label font-label-caps text-[10px] text-on-surface-variant">GITHUB</span>
       </a>
       <!-- LinkedIn -->
-      <a class="group flex flex-col items-center gap-2" href="https://www.linkedin.com/in/rajni-kant-goswami-056449231/"
-        target="_blank" rel="noopener noreferrer">
-        <div
-          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+      <a class="footer-icon-link flex flex-col items-center gap-2" href="https://www.linkedin.com/in/rajni-kant-goswami-056449231/" target="_blank" rel="noopener noreferrer">
+        <div class="icon-circle w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
           <span class="material-symbols-outlined">work</span>
         </div>
-        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">LINKEDIN</span>
+        <span class="icon-label font-label-caps text-[10px] text-on-surface-variant">LINKEDIN</span>
       </a>
       <!-- WhatsApp -->
-      <a class="group flex flex-col items-center gap-2" href="https://wa.me/918607832386" target="_blank"
-        rel="noopener noreferrer">
-        <div
-          class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:text-primary group-hover:border-primary transition-all">
+      <a class="footer-icon-link flex flex-col items-center gap-2" href="https://wa.me/918607832386" target="_blank" rel="noopener noreferrer">
+        <div class="icon-circle w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
           <span class="material-symbols-outlined">chat</span>
         </div>
-        <span class="font-label-caps text-[10px] text-on-surface-variant group-hover:text-primary">WHATSAPP</span>
+        <span class="icon-label font-label-caps text-[10px] text-on-surface-variant">WHATSAPP</span>
       </a>
     </div>
     <p class="font-label-caps text-label-caps text-on-surface-variant opacity-80 uppercase tracking-widest">© 2024
@@ -832,13 +865,13 @@
   <script>
     // Global helper for Project "Read More" expanding
     window.toggleDesc = function (btn) {
-      const p = btn.previousElementSibling;
+      const wrapper = btn.closest('.desc-wrapper');
+      const p = wrapper ? wrapper.querySelector('.desc-text') : btn.previousElementSibling;
+      if (!p) return;
       if (p.classList.contains('line-clamp-2')) {
         p.classList.remove('line-clamp-2');
-        p.classList.add('line-clamp-none');
         btn.innerHTML = 'SHOW LESS <span class="material-symbols-outlined text-[12px]">expand_less</span>';
       } else {
-        p.classList.remove('line-clamp-none');
         p.classList.add('line-clamp-2');
         btn.innerHTML = 'READ MORE <span class="material-symbols-outlined text-[12px]">expand_more</span>';
       }
@@ -1066,8 +1099,8 @@
           </div>
           <div class="p-8">
             <h3 class="font-headline-md text-headline-md text-on-surface mb-2">${proj.title}</h3>
-            <div class="mb-6">
-              <p class="text-on-surface-variant text-sm line-clamp-2 transition-all duration-300 leading-relaxed">${proj.description}</p>
+            <div class="mb-6 desc-wrapper">
+              <p class="text-on-surface-variant text-sm line-clamp-2 desc-text transition-all duration-300 leading-relaxed">${proj.description}</p>
               ${proj.description.length > 100 ? `<button type="button" onclick="window.toggleDesc(this)" class="read-more-btn text-primary text-[10px] font-label-caps tracking-widest hover:underline mt-2 flex items-center gap-1 uppercase relative z-10">READ MORE <span class="material-symbols-outlined text-[12px]">expand_more</span></button>` : ''}
             </div>
             <div class="flex flex-wrap gap-2 mb-6">
@@ -1399,7 +1432,7 @@
       });
 
       // Footer elements staggered fade & rise
-      gsap.from("footer > div, footer > p", {
+      gsap.from("footer > div:first-child, footer > p", {
         scrollTrigger: {
           trigger: "footer",
           start: "top 90%",
@@ -1410,6 +1443,22 @@
         y: 40,
         stagger: 0.15,
         ease: "power3.out",
+        clearProps: "all"
+      });
+
+      // Footer social icon links — staggered bounce entry
+      gsap.from(".footer-icon-link", {
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        duration: 0.7,
+        opacity: 0,
+        y: 30,
+        scale: 0.85,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
         clearProps: "all"
       });
     };
