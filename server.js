@@ -287,8 +287,18 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       `
     };
 
-    await transporter.sendMail(mailOptions);
+    // Instant response — DB me save hone ke baad turant success bhejo
     res.status(200).json({ success: true, message: 'Message sent successfully.' });
+
+    // Fire-and-forget: Email background me async jayegi, user ko wait nahi karwana
+    transporter.sendMail(mailOptions)
+      .then(() => {
+        console.log(`✅ Email sent successfully for contact from ${name} (${email})`);
+      })
+      .catch((mailErr) => {
+        console.error('❌ Background email sending failed:', mailErr.message);
+      });
+
   } catch (err) {
     console.error('❌ Error handling contact form submission:', err);
     res.status(500).json({ error: 'Something went wrong. Please try again later.' });
